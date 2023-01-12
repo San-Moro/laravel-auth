@@ -5,19 +5,11 @@
         <h2 class="py-3 mt-3"> Project changes </h2>
         <div class="row">
             <div class="col-10">
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
+                @include('partials.errors')
                 
                 <form action="{{ route('admin.projects.update', $project->slug) }}" method="POST">
-                    @method('PUT')
                     @csrf
+                    @method('PUT')
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input type="text" id="title" name="title" class="form-control" value="{{ $project->title }}">

@@ -5,16 +5,7 @@
         <h2 class="py-3 mt-3">Add a new project</h2>
         <div class="row">
             <div class="col-10">
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    
-                @endif
+                @include('partials.errors')
                 <form action="{{ route('admin.projects.store') }}" method="POST">
                     @csrf
                     <div class="form-group">
