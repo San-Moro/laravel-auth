@@ -12,11 +12,11 @@
                     @method('PUT')
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input type="text" id="title" name="title" class="form-control" value="{{ $project->title }}">
+                        <input type="text" id="title" name="title" class="form-control" value="{{old('title', $project->title)}}">
                     </div>
                     <div class="form-group">
                         <label for="description">Description</label>
-                        <textarea name="description" id="description" cols="30" rows="10" class="form-control">{{ $project->description }}</textarea>
+                        <textarea name="description" id="description" cols="30" rows="10" class="form-control">{{old('description', $project->description) }}</textarea>
                     </div>
                     <button type="submit" class="btn btn-info mt-3">Save changes</button>
                 </form>
