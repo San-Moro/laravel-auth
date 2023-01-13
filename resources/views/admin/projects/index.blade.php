@@ -18,6 +18,7 @@
                       <tr>
                         <th scope="col">Title</th>
                         <th scope="col">Date</th>
+                        <th scope="col">Image</th>
                         <th scope="col">Actions</th>
                       </tr>
                     </thead>
@@ -26,6 +27,13 @@
                             <tr>
                                 <th scope="row">{{ $project->title }}</th>
                                 <td colspan="2">{{ $project->created_at }}</td>
+                                <td>
+                                    @if ($project->image)
+                                        <img class="w-50" src="{{ asset('storage/' . $project->image)}}" alt="">
+                                    @else
+                                        <p>No image</p>
+                                    @endif
+                                </td>
                                 <td>
                                     <a class="btn btn-dark" href="{{ route('admin.projects.show', $project->slug) }}">
                                         <i class="fa-solid fa-eye"></i>
