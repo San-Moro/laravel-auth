@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -40,6 +41,8 @@ class ProjectController extends Controller
     {
         $form_data = $request->validated();
         $form_data['slug'] = Project::generateSlug($form_data['title']);
+        $image_path = Storage::put('uploads_img', $form_data['image']);
+        $form_data['image'] = $image_path;
         $project = Project::create($form_data);
         return redirect()->route('admin.projects.index')->with('message', "il nuovo progetto $project->title è stato aggiunto!");
     }

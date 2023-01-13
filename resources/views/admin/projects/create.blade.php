@@ -6,12 +6,21 @@
         <div class="row">
             <div class="col-10">
                 @include('partials.errors')
-                <form action="{{ route('admin.projects.store') }}" method="POST">
+                <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input type="text" id="title" name="title" class="form-control @error('title') is-invalid @enderror">
                         @error('title')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div> 
+                        @enderror
+                    </div>
+                    <div class="form-group py-3">
+                        <label for="image">Image</label>
+                        <input type="file" id="image" name="image" class="form-control @error('image') is-invalid @enderror">
+                        @error('image')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div> 
